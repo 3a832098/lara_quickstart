@@ -13,7 +13,6 @@
             <!-- Navbar 內容 -->
         </nav>
     </div>
-
         @yield('content')
     </body>
 </html>

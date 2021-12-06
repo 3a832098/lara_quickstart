@@ -19,7 +19,21 @@ use App\Models\Task;
     //add task
     Route::post('/task',function(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+        ]);
 
+        if ($validator->fails()) {
+            return redirect('/')
+                ->withInput()
+                ->withErrors($validator);
+        }
+        //新增任務存入DB的程式碼
+        $task = new Task;
+        $task->name = $request->name;
+        $task->save();
+
+        return redirect('/');
     });
     //del task
     Route::post('/task{task}',function(Request $request)
