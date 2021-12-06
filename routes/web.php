@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Task;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,11 @@ use App\Models\Task;
 */
     //show task
     Route::get('/', function () {
-        return view('tasks');
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+
+        return view('tasks', [
+            'tasks' => $tasks
+        ]);
     });
     //add task
     Route::post('/task',function(Request $request)
