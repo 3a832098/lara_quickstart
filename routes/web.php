@@ -41,8 +41,9 @@ use Illuminate\Http\Request;
         return redirect('/');
     });
     //del task
-    Route::post('/task{task}',function(Request $request)
+    Route::delete('/task/{task}',function(Task $task)
     {
-
+            $task->delete();
+            return redirect('/');
     });
 
