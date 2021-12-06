@@ -14,7 +14,7 @@ use App\Models\Task;
 */
     //show task
     Route::get('/', function () {
-
+        return view('tasks');
     });
     //add task
     Route::post('/task',function(Request $request)
@@ -22,7 +22,7 @@ use App\Models\Task;
 
     });
     //del task
-    Route::post('/task',function(Request $request)
+    Route::post('/task{task}',function(Request $request)
     {
 
     });
